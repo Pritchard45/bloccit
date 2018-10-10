@@ -13,7 +13,7 @@
     <%= form_for @question do |f| %>
       <div class="form-group">
         <%= f.label :title %>
-        <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Ask your Question" %>
+        <%= f.text_area :title, rows: 8, class: 'form-control', placeholder: "Ask your Question" %>
       </div>
       <div class="form-group">
         <%= f.label :body %>
@@ -23,9 +23,9 @@
         <%= f.submit "Save", class: 'btn btn-success' %>
       </div>
       <div class="form-group">
-        <%= check_box("Question", "Resolved", {}, "yes", "no") %>
+        <%= f.check_box :resolved  %>
           Question Resolved?
-      </div>    
+      </div>
     <% end %>
   </div>
 </div>
