@@ -42,6 +42,8 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails', '~> 3.0'
   gem 'rails-controller-testing'
+  gem 'shoulda'
+
 end
 
 group :production do
@@ -57,6 +59,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'pry-rails'
+
 
 end
 
