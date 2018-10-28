@@ -9,7 +9,7 @@ end
 
   resources :users, only: [:new, :create]
 
-
+  post 'users/confirm' => 'users#confirm'
   get 'welcome/contact'
   get 'welcome/faq'
 
