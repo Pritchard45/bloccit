@@ -18,3 +18,20 @@
 
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+ .user-info {
+   margin-top: 5px;
+   font-size: 20px;
+  }
+
+  .nav {
+    margin-top: 5px;
+    font-size: 20px;
+  }
+
+  .nav-tabs > li > a {
+    margin-right: 2px;
+    line-height: 3;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+  }
