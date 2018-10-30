@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     @user.password = params[:user][:password]
     @user.password_confirmation = params[:user][:password_confirmation]
 
+
     if @user.save
       flash[:notice] = "Welcome to Bloccit #{@user.name}!"
       create_session(@user)
@@ -29,7 +30,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-     params.require(:user).permit(:name, :email, :password, :password_confirmation)
+     params.require(:user).permit(:email, :password, :password_confirmation)
   end
 
 
