@@ -38,8 +38,8 @@ posts = Post.all
 end
 
 post_new = Post.find_or_create_by!(
-  title: "New Post New Title",
-  body: "New body New Post"
+  title: "New Post New Title make this post longer",
+  body: "New body New Post Please help Make this longer"
 )
 
 Comment.find_or_create_by!(post: post_new, body: "Unqiue comment")
@@ -61,11 +61,19 @@ advertisements = Advertisement.all
   )
 end
 
- user = User.first
- user.update_attributes!(
-   email: 'zander.pritchard@gmail.com', # replace this with your personal email
-   password: 'helloworld'
- )
+admin = User.create!(
+  name:     'Admin User',
+  email:    'admin@example.com',
+  password: 'helloworld',
+  role:     'admin'
+)
+
+member = User.create!(
+ name:     'Member User',
+ email:    'member@example.com',
+ password: 'helloworld'
+)
+
 
 puts "Seed finished"
 puts "#{User.count} users created"
