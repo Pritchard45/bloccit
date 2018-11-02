@@ -1,7 +1,7 @@
 module RandomData
   def self.random_name
     first_name = random_word.capitalize
-     last_name = random_word.capitalize
+    last_name = random_word.capitalize
      "#{first_name} #{last_name}"
   end
 
@@ -31,7 +31,7 @@ module RandomData
   def self.random_word
     letters = ('a'..'z').to_a
     letters.shuffle!
-    letters[0,rand(3..9)].join
+    letters[0,rand(5..9)].join
   end
 
   def self.random_integer
