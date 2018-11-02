@@ -38,11 +38,17 @@ posts = Post.all
 end
 
 post_new = Post.find_or_create_by!(
+  user: users.sample,
+  topic: topics.sample,
   title: "New Post New Title make this post longer",
   body: "New body New Post Please help Make this longer"
 )
 
-Comment.find_or_create_by!(post: post_new, body: "Unqiue comment")
+Comment.find_or_create_by!(
+  user: users.sample,
+  post: post_new,
+  body: "Unqiue comment"
+)
 
 50.times do
   Advertisement.create!(
