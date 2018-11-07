@@ -38,4 +38,13 @@ class Post < ApplicationRecord
    def create_vote
      user.votes.create(value: 1, post: self)
    end
+
+   after_create :favorite_post
+
+    private
+
+    def favorite_post
+        user.favorites.create(post: self)
+    end
+
 end
