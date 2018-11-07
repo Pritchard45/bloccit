@@ -8,6 +8,8 @@ class Post < ApplicationRecord
   after_create :create_favorite
 
   default_scope { order('rank DESC') }
+
+  scope :visible_to, -> (user) { user ? all : joins(:topic).where('topics.public' => true) }
   #for assignment
   scope :ordered_by_title, -> { order('title DESC') }
   # for assignment

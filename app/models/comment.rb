@@ -6,13 +6,14 @@ class Comment < ApplicationRecord
   validates :user, presence: true
 
 
-   after_create :send_favorite_emails
+  after_create :send_favorite_emails
 
-   private
+  private
 
-   def send_favorite_emails
-     post.favorites.each do |favorite|
-       FavoriteMailer.new_comment(favorite.user, post, self).deliver_now
-     end
-   end
+  def send_favorite_emails
+    post.favorites.each do |favorite|
+      next if favorite.user == post.user
+      FavoriteMailer.new_comment(favorite.user, post, self).deliver_now
+    end
+  end
 end
