@@ -64,7 +64,38 @@ RSpec.describe Post, type: :model do
          expect( post.points ).to eq(@up_votes - @down_votes)
        end
      end
+    describe "#create_favorite" do
+    it "sets the post to favorite" do
+      expect(post.favorites).to be_truthy
+    end
 
+    it "calls #create_favorite when a post is created" do
+      post = topic.posts.new(title: RandomData.random_sentence, body: RandomData.random_sentence, user: user)
+      expect(post).to receive(:create_favorite)
+      post.save
+    end
+
+    it "associates the favorite with the owner of the post" do
+      expect(post.favorites.first.user).to eq(post.user)
+    end
+  end
+
+      describe "#create_favorite" do
+        it "sets the post to favorite" do
+          expect(post.favorites).to be_truthy
+        end
+
+        it "calls #create_favorite when a post is created" do
+          post = topic.posts.new(title: RandomData.random_sentence, body: RandomData.random_sentence, user: user)
+          expect(post).to receive(:create_favorite)
+          post.save
+        end
+
+        it "associates the favorite with the owner of the post" do
+          expect(post.favorites.first.user).to eq(post.user)
+        end
+      end
+      
      describe "#update_rank" do
 # #28
       it "calculates the correct rank" do
