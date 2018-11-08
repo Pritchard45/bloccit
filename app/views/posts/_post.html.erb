@@ -8,5 +8,13 @@
        submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.name %> <br>
        <%= post.comments.count %> Comments
      </small>
+     <% avatar_url = post.user.avatar_url(40)%>
+     <% if avatar_url %>
+     <% end %>
    </div>
+   <div class="col-md-3">
+     <%= image_tag avatar_url, class: 'media-object' %>
+     Votes: <%= post.user.votes.count %><br/>
+     Comments: <%= post.user.comments.count %>
+  </div>
  </div>

@@ -6,7 +6,6 @@
        <% avatar_url = @user.avatar_url(128) %>
        <% if avatar_url %>
          <div class="media-left">
-
            <%= image_tag avatar_url, class: 'media-object' %>
          </div>
        <% end %>
@@ -22,7 +21,21 @@
  </div>
 
  <h2>Posts</h2>
- <%= render @user.posts %>
+<% if @user.posts.any? %>
+    <%= render @user.posts %>
+<% else %>
+    <p><%= @user.name %> has not submitted any posts.</p>
+<% end %>
 
- <h2>Comments</h2>
- <%= render @user.comments %>
+<h2>Comments</h2>
+<% if @user.comments.any? %>
+    <%= render @user.comments %>
+<% else %>
+    <p><%= @user.name %> has not submitted any comments.</p>
+<% end %>
+
+
+<h2>Favorites</h2>
+<% if @user.favorites.any? %>
+  <%= render @favorite_posts %>
+<% end %>  
