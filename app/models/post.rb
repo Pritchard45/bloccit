@@ -44,6 +44,6 @@ class Post < ApplicationRecord
 
   def create_favorite
     user.favorites.create(post: self)
+    FavoriteMailer.new_post(favorite.user, post, self).deliver_now
   end
-
 end
