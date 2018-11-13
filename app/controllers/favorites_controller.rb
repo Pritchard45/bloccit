@@ -16,7 +16,7 @@ class FavoritesController < ApplicationController
      redirect_to [post.topic, post]
    end
 
-      def destroy
+  def destroy
      post = Post.find(params[:post_id])
      favorite = current_user.favorites.find(params[:id])
 

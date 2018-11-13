@@ -1,0 +1,40 @@
+ <div class="row">
+   <div class="col-md-8">
+     <div class="media">
+       <br />
+
+       <% avatar_url = @user.avatar_url(128) %>
+       <% if avatar_url %>
+         <div class="media-left">
+           <%= image_tag avatar_url, class: 'media-object' %>
+         </div>
+       <% end %>
+       <div class="media-body">
+         <h2 class="media-heading"><%= @user.name %></h2>
+         <small>
+           <%= pluralize(@user.posts.count, 'post') %>,
+           <%= pluralize(@user.comments.count, 'comment') %>
+         </small>
+       </div>
+     </div>
+   </div>
+ </div>
+
+
+<% if @user.posts.any? %>
+    <%= render @user.posts %>
+<% else %>
+    <p><%= @user.name %> has not submitted any posts.</p>
+<% end %>
+
+<% if @user.comments.any? %>
+    <%= render @user.comments %>
+<% else %>
+    <p><%= @user.name %> has not commentted on anything yet.</p>
+<% end %>
+
+<% if @user.favorites.any? %>
+  <%= render @favorite_posts %>
+<% else %>
+  <p><%= @user.name %> has not favorited anything...</p>
+<% end %>
